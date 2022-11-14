@@ -4,7 +4,7 @@ import './BurgerMenu.css';
 
 const BurgerMenu = ({ onClose }) => {
   return (
-    <div className='burger'>
+    <section className='burger'>
       <div className='burger__backdrop'>
         <div className='burger__container'>
           <button type='button' className='burger__close-btn' onClick={() => onClose()} />
@@ -24,7 +24,7 @@ const BurgerMenu = ({ onClose }) => {
             </Link>
         </div>
       </div>
-    </div>
+    </section>
   )
 };
 

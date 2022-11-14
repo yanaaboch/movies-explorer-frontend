@@ -3,7 +3,7 @@ import photo from '../../images/me.jpg';
 
 const AboutMe = () => {
   return (
-    <div className='aboutme'>
+    <section className='aboutme'>
       <h2 className='aboutme__title'>Студент</h2>
       <div className='aboutme__content'>
         <div className='aboutme__info'>
@@ -20,7 +20,7 @@ const AboutMe = () => {
           alt='Моё фото'
         />
       </div>
-    </div>
+    </section>
   )
 };
 

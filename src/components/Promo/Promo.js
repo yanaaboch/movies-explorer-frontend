@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../Header/Header';
 import './Promo.css';
-import promo from '../../images/landing-logo.png';
+import promo from '../../images/landing-logo.svg';
 
 const Promo = ({ loggedIn }) => {
   return (
@@ -15,7 +15,7 @@ const Promo = ({ loggedIn }) => {
         <p className='promo__description'>
         Листайте ниже, чтобы узнать больше про этот проект и его создателя.
         </p>
-        <button className='promo__button'>Узнать больше</button>
+        <button className='promo__button' type='button' >Узнать больше</button>
         </div>
       <img className='promo__logo' src={promo} alt='Логотип Промо.' />
       </div>

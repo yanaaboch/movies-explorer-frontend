@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import useForm from '../../hooks/useForm';
 import './Register.css';
-import logo from '../../images/logo.png';
+import logo from '../../images/logo.svg';
 
 const Register = () => {
   const { enteredValues, errors, handleChange } = useForm();

@@ -13,7 +13,7 @@ const MoviesCardList = ({ isLoading=false, isSavedMoviesPage, movies }) => {
         })}
       </ul>
       )}
-      <button className={!isSavedMoviesPage ? 'cards__button' : 'cards__button_hidden'}>Ещё</button>
+      <button className={!isSavedMoviesPage ? 'cards__button' : 'cards__button_hidden'} type='button' >Ещё</button>
     </section>
   )
 };

@@ -2,7 +2,7 @@ import './Portfolio.css';
 
 const Portfolio = () => {
   return (
-    <div className='portfolio'>
+    <section className='portfolio'>
       <h3 className='portfolio__title'>Портфолио</h3>
       <ul className='portfolio__projects'>
         <li>
@@ -24,7 +24,7 @@ const Portfolio = () => {
           <span>↗</span>
         </li>
       </ul>
-    </div>
+    </section>
   )
 };
 

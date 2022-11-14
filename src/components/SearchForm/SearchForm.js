@@ -1,6 +1,6 @@
 import './SearchForm.css';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
-import icon from '../../images/icon.png';
+import icon from '../../images/icon.svg';
 
 const SearchForm = () => {
   return (
@@ -11,8 +11,9 @@ const SearchForm = () => {
           type='text'
           placeholder='Фильм'
           className='search__input'
+          required
         />
-        <button className='search__button'>
+        <button className='search__button' type='submit'>
         </button>
       </form>
 

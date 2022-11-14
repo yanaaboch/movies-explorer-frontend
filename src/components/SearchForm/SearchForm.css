@@ -2,17 +2,19 @@
     max-width: calc(100% - 146px);
     margin: auto;
     padding-top: 70px;
+    background-color: #FAFAFA;
   }
   
   .search__form {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom:  1px solid #E8E8E8;;
+    border-bottom:  1px solid #E8E8E8;
     margin-bottom: 30px;
     width: 100%;
+    background-color: #FAFAFA;
   }
-  
+
   .search__input {
     padding: 0px;
     padding-bottom: 15px;
@@ -23,6 +25,11 @@
     font-size: 28px;
     line-height: 34px;
     color: #A0A0A0;
+    background-color: #FAFAFA;
+  }
+
+  .search__input:focus {
+    color: black;
   }
   
   .search__button {
@@ -38,6 +45,7 @@
     border: none;
     cursor: pointer;
     transition: .3s ease;
+    padding: 11px 14px;
   }
   
   .search__button:hover {

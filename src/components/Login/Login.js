@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import useForm from '../../hooks/useForm';
 import './Login.css';
-import logo from '../../images/logo.png';
+import logo from '../../images/logo.svg';
 
 const Login = () => {
   const { enteredValues, errors, handleChange } = useForm();
 
   return (
-    <div className='login__container'>
+    <section className='login__container'>
       <div className='login__header'>
         <Link to='/'>
           <img
@@ -50,7 +50,7 @@ const Login = () => {
         <span>Ещё не зарегистрированы?</span>
         <Link to='signup' className='login__link'>Регистрация</Link>
       </div>
-    </div>
+    </section>
   )
 };
 
