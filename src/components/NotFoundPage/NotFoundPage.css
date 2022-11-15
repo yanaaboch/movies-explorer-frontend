@@ -1,0 +1,82 @@
+.page__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 184px;
+    height: 100%;
+    position: relative;
+  }
+  
+  .page__info-block {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    top: 246px;
+    gap: 5px;
+  }
+  
+  .page__status {
+    font-weight: 400;
+    font-size: 140px;
+    line-height: 169px;
+    display: block;
+  }
+  
+  .page__notfound {
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+  }
+  
+  .page__link {
+    position: absolute;
+    color: #3456F3;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    transition: 0.3s ease;
+    bottom: 60px;
+  }
+  
+  .page__link:hover {
+    opacity: 0.7;
+  }
+
+  @media screen and (max-width: 768px) {
+    .page__info-block {
+      top: 408px;
+    }
+
+    .page__link {
+      bottom: 222px;
+    }
+  }
+  
+  @media screen and (max-width: 420px) {
+    .page__info-block {
+      top: 329px;
+    }
+
+    .page__link {
+      bottom: 30px;
+    }
+
+    .page__status {
+      font-size: 80px;
+      line-height: 97px;
+      margin-bottom: 10px;
+    }
+  
+    .page__notfound {
+      font-size: 12px;
+      line-height: 15px;
+    }
+  
+    .page__link {
+      font-size: 12px;
+      line-height: 15px;
+    }
+  }
