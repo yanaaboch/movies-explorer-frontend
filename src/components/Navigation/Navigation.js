@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './Navigation.css';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
 const Navigation = ({ loggedIn }) => {
     const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
+
+    const location = useLocation().pathname;
   
     const toggleBurgerMenu = () => {
       setIsBurgerMenuOpen(!isBurgerMenuOpen);
@@ -14,11 +16,11 @@ const Navigation = ({ loggedIn }) => {
       <nav className='navigation'>
         {loggedIn ? (
           <>
-            <div className='navigation__movies'>
-              <Link to='/movies' className={'navigation__movies-link_active'}>
+             <div className={location === '/' ? 'navigation__movies navigation__movies_white' : 'navigation__movies'}>
+              <Link to='/movies' className={location === '/movies' ? 'navigation__movies-link_active' : 'navigation__movies-link'}>
                 Фильмы
               </Link>
-              <Link to='/saved-movies' className={'navigation__movies-link_active'}>
+              <Link to='/saved-movies' className={location === '/saved-movies' ? 'navigation__movies-link_active' : 'navigation__movies-link'}>
                 Сохранённые фильмы
               </Link>
             </div>
@@ -41,7 +43,7 @@ const Navigation = ({ loggedIn }) => {
           </div>
         )}
         {!isBurgerMenuOpen && loggedIn ? (
-          <button className='burger__button' type='button' onClick={toggleBurgerMenu} />
+          <button className={location === '/' ? 'burger__button burger__button_white' :'burger__button'} type='button' onClick={toggleBurgerMenu} />
         ) : <BurgerMenu onClose={toggleBurgerMenu} />
         }
       </nav>

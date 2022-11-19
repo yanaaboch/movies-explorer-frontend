@@ -1,19 +1,29 @@
-import React from 'react';
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
-import Preloader from '../Preloader/Preloader';
 
-const MoviesCardList = ({ isLoading=false, isSavedMoviesPage, movies }) => {
+const MoviesCardList = ({
+  isSavedMoviesPage,
+  movies,
+  savedMovies,
+  onSave,
+  onDelete
+}) => {
+
   return (
     <section className='cards'>
-      {isLoading ? <Preloader /> : (
+
       <ul className='cards__list'>
-        {movies.map((movie) => {
-          return <MoviesCard key={movie.id} movie={movie} isSavedMoviesPage={isSavedMoviesPage} />
+      {movies.sort().map(movie => {
+          return <MoviesCard
+            key={isSavedMoviesPage ? movie.movieId : movie.id}
+            movie={movie}
+            isSavedMoviesPage={isSavedMoviesPage}
+            onSave={onSave}
+            onDelete={onDelete}
+            savedMovies={savedMovies}
+          />
         })}
       </ul>
-      )}
-      <button className={!isSavedMoviesPage ? 'cards__button' : 'cards__button_hidden'} type='button' >Ещё</button>
     </section>
   )
 };

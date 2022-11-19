@@ -12,6 +12,10 @@
     width: 100%;
     height: 201px;
   }
+
+  .card__link {
+    text-decoration: none;
+  }
   
   .card__description {
     display: flex;
@@ -60,6 +64,10 @@
     cursor: pointer;
     visibility: hidden;
   }
+
+  .card__button_hidden {
+    display: none;
+  }  
   
   .card:hover .card__button {
     visibility: visible;
