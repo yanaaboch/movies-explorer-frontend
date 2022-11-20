@@ -56,7 +56,7 @@ const Login = ({ onLogin }) => {
       </form>
       <div className='login__bottom-block'>
         <span>Ещё не зарегистрированы?</span>
-        <Link to='signup' className='login__link'>Регистрация</Link>
+        <Link to='/signup' className='login__link'>Регистрация</Link>
       </div>
     </section>
   )

@@ -1,4 +1,4 @@
-const BASE_API_URL = 'https://movies.yanaaboch.nomoredomains.icu/api';
+const BASE_API_URL = 'http://api.movies.yanaaboch.nomoredomains.club';
 
 const headers = {
   Accept: 'application/json',
@@ -15,7 +15,7 @@ const checkResponse = (res) => {
 export const register = ({ name, email, password }) => {
   return fetch(`${BASE_API_URL}/signup`, {
     method: 'POST',
-    credentials: 'include',
+    //credentials: 'include',
     headers,
     body: JSON.stringify({ 
       name,
@@ -28,7 +28,7 @@ export const register = ({ name, email, password }) => {
 export const authorize = ({ email, password }) => {
   return fetch(`${BASE_API_URL}/signin`, {
     method: 'POST',
-    credentials: 'include',
+    //credentials: 'include',
     headers,
     body: JSON.stringify({ email, password }),
   }).then((res) => checkResponse(res));
@@ -37,7 +37,7 @@ export const authorize = ({ email, password }) => {
 export const getContent = () => {
   return fetch(`${BASE_API_URL}/users/me`, {
     method: 'GET',
-    credentials: 'include',
+    //credentials: 'include',
     headers,
   }).then((res) => checkResponse(res));
 };
@@ -46,7 +46,7 @@ export const updateUserInfo = (data) => {
   return fetch(`${BASE_API_URL}/users/me`, {
     method: 'PATCH',
     headers,
-    credentials: 'include',
+   // credentials: 'include',
     body: JSON.stringify({
       name: data.name, 
       email: data.email,
@@ -58,7 +58,7 @@ export const getSavedMovies = () => {
   return fetch(`${BASE_API_URL}/movies`, {
     method: 'GET',
     headers,
-    credentials: 'include',
+   // credentials: 'include',
   }).then((res) => checkResponse(res));
 };
 
@@ -66,7 +66,7 @@ export const saveMovie = (movie) => {
   return fetch(`${BASE_API_URL}/movies`, {
     method: 'POST',
     headers,
-    credentials: 'include',
+   // credentials: 'include',
     body: JSON.stringify({
       country: movie.country,
       director: movie.director,
@@ -87,7 +87,7 @@ export const deleteMovie = (id) => {
   return fetch(`${BASE_API_URL}/movies/${id}`, {
     method: 'DELETE',
     headers,
-    credentials: 'include',
+   // credentials: 'include',
   }).then((res) => checkResponse(res));
 };
 
@@ -95,7 +95,7 @@ export const logOut = () => {
     return fetch(`${BASE_API_URL}/signout`, {
       method: 'POST',
       headers,
-      credentials: 'include',
+     // credentials: 'include',
     }).then((res) => {
         return checkResponse(res);
       });
