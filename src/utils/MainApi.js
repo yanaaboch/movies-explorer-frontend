@@ -1,4 +1,4 @@
-const BASE_API_URL = 'http://movies.yanaaboch.nomoredomains.icu/api/';
+const BASE_API_URL = 'https://movies.yanaaboch.nomoredomains.icu/api';
 
 const headers = {
   Accept: 'application/json',
