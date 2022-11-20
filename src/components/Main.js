@@ -8,7 +8,7 @@ import Footer from "./Footer/Footer";
 const Main = ({ loggedIn }) => {
   return (
     <>
-      <Promo loggedIn={loggedIn} />
+      <Promo />
       <AboutProject />
       <Techs />
       <AboutMe />
