@@ -34,18 +34,24 @@ export const authorize = ({ email, password }) => {
   }).then((res) => checkResponse(res));
 };
 
-export const getContent = () => {
+export const getContent = (jwt) => {
   return fetch(`${BASE_API_URL}/users/me`, {
     method: 'GET',
     //credentials: 'include',
-    headers,
+    headers: {
+        ...headers,
+        'Authorization': `Bearer ${jwt}`,
+    }
   }).then((res) => checkResponse(res));
 };
 
-export const updateUserInfo = (data) => {
+export const updateUserInfo = (data, jwt) => {
   return fetch(`${BASE_API_URL}/users/me`, {
     method: 'PATCH',
-    headers,
+    headers: {
+        ...headers,
+        'Authorization': `Bearer ${jwt}`,
+    },
     //credentials: 'include',
     body: JSON.stringify({
       name: data.name, 
@@ -54,18 +60,24 @@ export const updateUserInfo = (data) => {
   }).then((res) => checkResponse(res));
 };
 
-export const getSavedMovies = () => {
+export const getSavedMovies = (jwt) => {
   return fetch(`${BASE_API_URL}/movies`, {
     method: 'GET',
-    headers,
+    headers: {
+        ...headers,
+        'Authorization': `Bearer ${jwt}`,
+    }
     //credentials: 'include',
   }).then((res) => checkResponse(res));
 };
 
-export const saveMovie = (movie) => {
+export const saveMovie = (movie, jwt) => {
   return fetch(`${BASE_API_URL}/movies`, {
     method: 'POST',
-    headers,
+    headers: {
+        ...headers,
+        'Authorization': `Bearer ${jwt}`,
+    },
     //credentials: 'include',
     body: JSON.stringify({
       country: movie.country,
@@ -83,10 +95,13 @@ export const saveMovie = (movie) => {
   }).then((res) => checkResponse(res));
 };
 
-export const deleteMovie = (id) => {
+export const deleteMovie = (id, jwt) => {
   return fetch(`${BASE_API_URL}/movies/${id}`, {
     method: 'DELETE',
-    headers,
+    headers: {
+        ...headers,
+        'Authorization': `Bearer ${jwt}`,
+    }
     //credentials: 'include',
   }).then((res) => checkResponse(res));
 };
