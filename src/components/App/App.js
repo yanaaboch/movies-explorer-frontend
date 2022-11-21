@@ -30,7 +30,6 @@ import {
 import { search } from "../../utils/utils";
 
 const App = () => {
-  // eslint-disable-next-line no-unused-vars
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [isLoading, setIsLoading] = useState(false);
