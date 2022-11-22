@@ -165,13 +165,12 @@ const App = () => {
   };
 
   const handleTokenCheck = () => {
-    const path = location.pathname;
     const jwt = localStorage.getItem('jwt');
     getContent(jwt)
       .then((data) => {
         setIsLoggedIn(true);
         setCurrentUser(data)
-        history.push(path);
+        history(location.pathname);
       })
       .catch((err) => console.log(err));
     getSavedMovies(jwt)
