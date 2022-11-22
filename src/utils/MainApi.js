@@ -1,4 +1,5 @@
-const BASE_API_URL = 'https://api.movies.yanaaboch.nomoredomains.club';
+//const BASE_API_URL = 'https://api.movies.yanaaboch.nomoredomains.club';
+import { BASE_API_URL } from "./constants";
 
 const headers = {
   Accept: 'application/json',
@@ -12,7 +13,7 @@ const checkResponse = (res) => {
   return Promise.reject(`Ошибка: ${res.status}`);
 }
 
-export const register = ({ name, email, password }) => {
+export const register = async ({ name, email, password }) => {
   return fetch(`${BASE_API_URL}/signup`, {
     method: 'POST',
     //credentials: 'include',
@@ -25,7 +26,7 @@ export const register = ({ name, email, password }) => {
   }).then((res) => checkResponse(res));
 };
 
-export const authorize = ({ email, password }) => {
+export const authorize = async ({ email, password }) => {
   return fetch(`${BASE_API_URL}/signin`, {
     method: 'POST',
     //credentials: 'include',
@@ -34,7 +35,7 @@ export const authorize = ({ email, password }) => {
   }).then((res) => checkResponse(res));
 };
 
-export const getContent = (jwt) => {
+export const getContent = async (jwt) => {
   return fetch(`${BASE_API_URL}/users/me`, {
     method: 'GET',
     //credentials: 'include',
@@ -45,7 +46,7 @@ export const getContent = (jwt) => {
   }).then((res) => checkResponse(res));
 };
 
-export const updateUserInfo = (data, jwt) => {
+export const updateUserInfo = async (data, jwt) => {
   return fetch(`${BASE_API_URL}/users/me`, {
     method: 'PATCH',
     headers: {
@@ -60,7 +61,7 @@ export const updateUserInfo = (data, jwt) => {
   }).then((res) => checkResponse(res));
 };
 
-export const getSavedMovies = (jwt) => {
+export const getSavedMovies = async (jwt) => {
   return fetch(`${BASE_API_URL}/movies`, {
     method: 'GET',
     headers: {
@@ -71,7 +72,7 @@ export const getSavedMovies = (jwt) => {
   }).then((res) => checkResponse(res));
 };
 
-export const saveMovie = (movie, jwt) => {
+export const saveMovie = async (movie, jwt) => {
   return fetch(`${BASE_API_URL}/movies`, {
     method: 'POST',
     headers: {
@@ -95,7 +96,7 @@ export const saveMovie = (movie, jwt) => {
   }).then((res) => checkResponse(res));
 };
 
-export const deleteMovie = (id, jwt) => {
+export const deleteMovie = async (id, jwt) => {
   return fetch(`${BASE_API_URL}/movies/${id}`, {
     method: 'DELETE',
     headers: {
@@ -105,13 +106,3 @@ export const deleteMovie = (id, jwt) => {
     //credentials: 'include',
   }).then((res) => checkResponse(res));
 };
-
-export const logOut = () => {
-    return fetch(`${BASE_API_URL}/signout`, {
-      method: 'POST',
-      headers,
-      //credentials: 'include',
-    }).then((res) => {
-        return checkResponse(res);
-      });
-  }

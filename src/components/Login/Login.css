@@ -76,6 +76,15 @@
     margin-top: 179px;
     margin-bottom: 16px;
   }
+
+  .login__button:not([disabled]):hover {
+    opacity: 0.8;
+  }
+  
+  .login__button:disabled {
+    background-color: #3456F3;
+    opacity: .5;
+  }  
   
   .login__bottom-block {
     color: #A0A0A0;

@@ -1,22 +1,19 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
+import useScreenWidth from '../../hooks/useScreenWidth';
 import './MoviesCard.css';
+
 
 import { convertMinToHours } from '../../utils/utils';
 
 const MoviesCard = ({
   isSavedMoviesPage,
   movie,
-  savedMovies,
   onSave,
-  onDelete
+  onDelete,
+  saved
 }) => {
-  const [isSaved, setIsSaved] = useState(false);
-
-  const checkCard = useCallback(() => {
-    const result = savedMovies.find(item => item.movieId === movie.id && item.nameRU === movie.nameRU);
-    setIsSaved(result);
-  }, [savedMovies, movie]);
-
+  const screenWidth = useScreenWidth();
+  const [isMobile, setIsMobile] = useState(false);
   const handleSaveCard = () => {
     onSave(movie);
   };
@@ -26,8 +23,12 @@ const MoviesCard = ({
   };
 
   useEffect(() => {
-    checkCard();
-  }, [savedMovies, checkCard]);
+    if (screenWidth < 786) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  }, [screenWidth]);
 
   return (
     <li className='card'>
@@ -45,18 +46,21 @@ const MoviesCard = ({
           className='card__image'
         />
       </a>
-      {isSaved && !isSavedMoviesPage &&
+      {saved && !isSavedMoviesPage &&
         <button type='button' className='card__button_saved' onClick={handleSaveCard} />}
       {isSavedMoviesPage ? (
         <button className='card__button_delete' type='button' onClick={handleDeleteCard} />
       ) : (
         <button
-          className={!isSaved ? 'card__button' : 'card__button_hidden'}
+          className={!saved ? 'card__button' : 'card__button_hidden'}
           type='button'
           onClick={handleSaveCard}
         >
           Сохранить
         </button>
+      )}
+      {isMobile && (
+        <button className='card__button_delete card__button_visible' type='button' onClick={handleDeleteCard} />
       )}
     </li>
   )

@@ -73,6 +73,17 @@
     margin-top: 69px;
     margin-bottom: 16px;
   }
+
+  .register__button:not([disabled]):hover {
+    opacity: 0.8;
+  }
+  
+  .register__button:disabled {
+    background-color: #3456F3;
+    opacity: .5;
+  }
+  
+  .regis
   
   .register__bottom {
     color: #A0A0A0;

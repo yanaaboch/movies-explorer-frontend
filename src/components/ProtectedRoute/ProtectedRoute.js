@@ -5,7 +5,7 @@ const ProtectedRoute = ({ component: Component, ...props }) => {
     <Routes>
         <Route>
       {() =>
-        props.loggedIn ? <Component {...props} /> : <Navigate to={props.path} />
+        props.loggedIn ? <Component {...props} /> : <Navigate to='/' />
       }
       </Route>
     </Routes>
