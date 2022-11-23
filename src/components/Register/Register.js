@@ -37,7 +37,6 @@ const Register = ({ onRegister }) => {
           required
           value={enteredValues.name || ''}
           onChange={handleChange}
-          pattern={'^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$'}
         />
         <span className='register__error'>{errors.name}</span>
         <label className='register__label'htmlFor='email'>E-mail</label>

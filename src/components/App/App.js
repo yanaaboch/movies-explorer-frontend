@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route, Navigate, useNavigate, useLocation } from "react-router-dom";
+import { Switch, Redirect, Route, useLocation, useHistory } from "react-router-dom";
 
 import './App.css';
 
@@ -37,7 +37,7 @@ const App = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [popupMessage, setPopupMessage] = useState('');
 
-  const history = useNavigate();
+  const history = useHistory();
   const location = useLocation();
   
   useEffect(() => {
@@ -45,7 +45,7 @@ const App = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoggedIn])
 
-  const handleRegistration = async ({ name, email, password }) => {
+  const handleRegistration = ({ name, email, password }) => {
     return register({ name, email, password })
       .then(() => {
         handleAuthorization({ email, password });
@@ -56,7 +56,7 @@ const App = () => {
       });
   };
 
-  const handleAuthorization = async (data) => {
+  const handleAuthorization = (data) => {
     return authorize(data)
       .then((data) => {
         setIsLoggedIn(true);
@@ -165,12 +165,13 @@ const App = () => {
   };
 
   const handleTokenCheck = () => {
+    const path = location.pathname;
     const jwt = localStorage.getItem('jwt');
     getContent(jwt)
       .then((data) => {
         setIsLoggedIn(true);
         setCurrentUser(data)
-        history(location.pathname);
+        history.push(path);
       })
       .catch((err) => console.log(err));
     getSavedMovies(jwt)
@@ -183,46 +184,57 @@ const App = () => {
   return (
     <CurrentUserContext.Provider value={currentUser}>
     <div className="App">
-      <Routes>
-        <Route path='/' element={<Main loggedIn={isLoggedIn} />} />
-        <Route path='/signup'
-          element={!isLoggedIn ? (
-          <Register onRegister={handleRegistration} />) : (<Navigate to='/' />)} />
-        <Route path='/signin'
-          element={!isLoggedIn ? (
-          <Login onLogin={handleAuthorization} />) : (<Navigate to='/' />)} />
-        <Route path='/movies'
-          element={<ProtectedRoute loggedIn={isLoggedIn}>
-            <Movies 
-          savedMovies={savedMovies}
-          onLoading={setIsLoading}
-          isLoading={isLoading}
-          onSave={handleSaveMovie}
-          onDelete={handleDeleteMovie}
-          setPopupMessage={setPopupMessage}
-          setIsPopupOpen={setIsPopupOpen}></Movies>
-          </ProtectedRoute>}
+    <Switch>
+          <Route exact path='/'>
+            <Main loggedIn={isLoggedIn} />
+          </Route>
+          <Route exact path='/signup'>
+            {!isLoggedIn ? (
+              <Register onRegister={handleRegistration} />
+            ) : (
+              <Redirect to='/' />
+            )}
+          </Route>
+          <Route exact path='/signin'>
+            {!isLoggedIn ? (
+              <Login onLogin={handleAuthorization} />
+            ) : (
+              <Redirect to='/' />
+            )}
+          </Route>
+          <ProtectedRoute
+            path='/movies'
+            component={Movies}
+            loggedIn={isLoggedIn}
+            savedMovies={savedMovies}
+            onLoading={setIsLoading}
+            isLoading={isLoading}
+            onSave={handleSaveMovie}
+            onDelete={handleDeleteMovie}
+            setPopupMessage={setPopupMessage}
+            setIsPopupOpen={setIsPopupOpen}
           />
-        <Route path='/saved-movies/*'
-          element={<ProtectedRoute loggedIn={isLoggedIn}>
-            <SavedMovies
-          savedMovies={savedMovies}
-          isLoading={isLoading}
-          onDelete={handleDeleteMovie}
-          setPopupMessage={setPopupMessage}
-          setIsPopupOpen={setIsPopupOpen}></SavedMovies>
-          </ProtectedRoute>}
+          <ProtectedRoute
+            path='/saved-movies'
+            component={SavedMovies}
+            savedMovies={savedMovies}
+            loggedIn={isLoggedIn}
+            isLoading={isLoading}
+            onDelete={handleDeleteMovie}
+            setPopupMessage={setPopupMessage}
+            setIsPopupOpen={setIsPopupOpen}
           />
-        <Route path='/profile'
-          element={<ProtectedRoute loggedIn={isLoggedIn}>
-          <Profile
-          onUpdateUser={handleUpdateUser}
-          onSignOut={handleSignOut}></Profile>
-          </ProtectedRoute>}
+          <ProtectedRoute
+            path='/profile'
+            component={Profile}
+            loggedIn={isLoggedIn}
+            onUpdateUser={handleUpdateUser}
+            onSignOut={handleSignOut}
           />
-        <Route path='*'
-          element={<NotFoundPage loggedIn={isLoggedIn} />} />
-      </Routes>
+          <Route path='*'>
+            <NotFoundPage />
+          </Route>
+        </Switch>
 
       <InfoTooltip
           isOpen={isPopupOpen}

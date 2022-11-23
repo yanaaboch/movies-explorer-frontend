@@ -22,15 +22,19 @@ const SavedMovies = ({
   const [notFound, setNotFound] = useState(false);
   const [showedMovies, setShowedMovies] = useState(savedMovies);
   const [filteredMovies, setFilteredMovies] = useState(showedMovies);
+  const [searchQuery, setSearchQuery] = useState('');
+  // eslint-disable-next-line no-unused-vars
+  const [isFormValid, setIsFormValid] = useState(false);
   const location = useLocation();
 
   const handleSearchSubmit = (inputValue) => {
-    if (inputValue.trim().length === 0) {
+    if (!isFormValid) {
       setPopupMessage('Нужно ввести ключевое слово');
       setIsPopupOpen(true);
       return;
     }
     const moviesList = filterMovies(savedMovies, inputValue, shortMovies);
+    setSearchQuery(inputValue);
     if (moviesList.length === 0) {
       setNotFound(true);
       setPopupMessage('Ничего не найдено.');
@@ -62,9 +66,11 @@ const SavedMovies = ({
       setShowedMovies(filterShortMovies(savedMovies));
     } else {
       setShortMovies(false);
-      setShowedMovies(savedMovies);
+      const moviesList = filterMovies(savedMovies, searchQuery, shortMovies);
+      setShowedMovies(moviesList);
     }
-  }, [savedMovies, location]);
+    // eslint-disable-next-line 
+  }, [savedMovies, location, shortMovies]);
 
   useEffect(() => {
     setFilteredMovies(savedMovies);

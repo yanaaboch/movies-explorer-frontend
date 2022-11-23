@@ -56,7 +56,6 @@ const SearchForm = ({
               className='search__button'
               disabled={disabled}
             >
-              Поиск
             </button>
           </form>
 
@@ -81,7 +80,6 @@ const SearchForm = ({
               className='search__button'
               disabled={disabled}
             >
-              Поиск
             </button>
           </form>
 
