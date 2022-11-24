@@ -32,8 +32,8 @@ const STRING_VALIDATION_ERROR_TEXT = 'значение не является с�
 
 const BASE_URL = {
   BEATFILM_MOVIES: 'https://api.nomoreparties.co',
-  MOVIES_EXPLORER: 'http://localhost:3000',
-  // MOVIES_EXPLORER: 'https://api.movies.yanaaboch.nomoredomains.club',
+  // MOVIES_EXPLORER: 'http://localhost:3000',
+  MOVIES_EXPLORER: 'https://api.movies.yanaaboch.nomoredomains.club',
 };
 
 const INPUT_LIST = [
