@@ -1,175 +1,207 @@
-.about {
-    max-width: calc(100% - 140px);
-    margin: auto;
-    padding-bottom: 110px;
-    padding-top: 110px;
-  }
-  
-  .about__title {
-    margin: 0;
-    padding: 0;
-    display: block;
-    font-weight: 400;
-    font-size: 22px;
-    line-height: 27px;
-    letter-spacing: -0.04em;
-    color: #000000;
-    padding-bottom: 23px;
-    border-bottom: 1px solid #000;
-  }
-  
-  .about__description-blocks {
-    padding-top: 70px;
-    display: flex;
-    justify-content: space-between;
-    gap: 30px;
-  }
-  
-  .about__description-block {
-    max-width: 550px;
-  }
-  
-  .about__description-block h3 {
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
-    letter-spacing: -0.04em;
-    color: #000;
-    margin: 0;
-    padding: 0;
-    margin-bottom: 26px;
-  }
-  
-  .about__description-block span {
-    margin: 0;
-    padding: 0;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-    color: #000;
-  }
-  
-  .about__time-bar {
-    padding-top: 110px;
-    display: flex;
-    height: 36px;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-    color: #000000;
-    margin-bottom: 14px;
-  }
-  
-  .about__backend {
-    display: flex;
-    background-color: #3456F3;
-    width: 20%;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-  }
-  
-  .about__frontend {
-    display: flex;
-    background-color: #F2F2F2;;
-    width: 80%;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .about__time-text {
-    display: flex;
-    color: #A0A0A0;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 17px;
-  }
-  
-  .about__backend-text {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 20%;
-  }
-  
-  .about__frontend-text {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 80%;
-  }
-  
-  @media screen and (max-width: 768px) {
-    .about {
-      max-width: calc(100% - 100px);
-      padding-bottom: 90px;
-      padding-top: 90px;
-    }
-  
-    .about__description-block {
-      max-width: 319px;
-    }
+.about-project {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
 
-    .about__time-bar {
-      padding-top: 93px;
-    }
+  padding: 71px 18px;
+}
+
+.about-project__title {
+  margin: 0;
+  padding: 0;
+
+  letter-spacing: -0.04em;
+
+  font-size: 18px;
+  font-weight: 400;
+  line-height: calc(22 / 18);
+}
+
+.about-project__title::after {
+  display: block;
+
+  margin-top: 27px;
+
+  content: '';
+
+  border-bottom: 1px solid #000000;
+}
+
+.about-project__text-section {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  margin-top: 61px;
+}
+
+.about-project__text-block:nth-child(n + 2) {
+  margin-top: 57px;
+}
+
+.about-project__subtitle {
+  margin: 0;
+  padding: 0;
+
+  letter-spacing: -0.04em;
+
+  font-size: 18px;
+  font-weight: 400;
+  line-height: calc(22 / 18);
+}
+
+.about-project__text {
+  margin: 0;
+  margin-top: 15px;
+  padding: 0;
+
+  font-size: 11px;
+  font-weight: 400;
+  line-height: calc(16 / 11);
+}
+
+.about-project__timeline {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  margin-top: 60px;
+}
+
+.about-project__timeline-box {
+  text-align: center;
+
+  font-size: 11px;
+  font-weight: 400;
+  line-height: calc(13 / 11);
+}
+
+.about-project__timeline-box_type_backend {
+  width: calc(100 / 284 * 100%);
+}
+
+.about-project__timeline-box_type_frontend {
+  width: calc(184 / 284 * 100%);
+}
+
+.about-project__timeline-term {
+  margin: 0;
+  padding: 11px 0;
+}
+
+.about-project__timeline-term_type_backend {
+  background-color: var(--green-color);
+}
+
+.about-project__timeline-term_type_frontend {
+  background-color: #F2F2F2;
+}
+
+.about-project__timeline-description {
+  margin: 0;
+  margin-top: 10px;
+  padding: 0;
+
+  color: #a0a0a0;
+}
+
+@media screen and (min-width: 600px) {
+  .about-project {
+    padding: 91px 50px 90px;
   }
-  
-  @media screen and (max-width: 420px) {
-    .about {
-      padding-top: 70px;
-      max-width: calc(100% - 36px);
-      padding-bottom: 93px;
-    }
-  
-    .about__title {
-      font-size: 18px;
-      line-height: 22px;
-      padding-bottom: 28px;
-    }
-  
-    .about__description-blocks {
-      flex-direction: column;
-      gap: 56px;
-      padding-top: 60px;
-    }
-  
-    .about__description-block {
-      margin-bottom: 0;
-    }
-  
-    .about__description-block h3 {
-      font-weight: 400;
-      font-size: 18px;
-      line-height: 22px;
-      letter-spacing: -0.04em;
-      margin-bottom: 16px;
-    }
-  
-    .about__description-block span {
-      font-weight: 400;
-      font-size: 11px;
-      line-height: 16px;
-    }
-  
-    .about__time-bar {
-      padding-top: 60px;
-      height: 35px;
-      font-size: 11px;
-      line-height: 13px;
-      margin-bottom: 10px;
-    }
-  
-    .about__backend {
-      width: 36%;
-    }
-  
-    .about__time-text {
-      font-size: 11px;
-      line-height: 13px;
-    }
-  
-    .about__backend-text {
-      width: 36%;
-    }
+
+  .about-project__title {
+    font-size: 22px;
+    line-height: calc(27 / 22);
   }
+
+  .about-project__title::after {
+    margin-top: 22px;
+  }
+
+  .about-project__text-section {
+    flex-direction: row;
+
+    margin-top: 70px;
+  }
+
+  .about-project__text-block:nth-child(n + 2) {
+    margin-top: 0;
+    margin-left: 37px;
+  }
+
+  .about-project__subtitle {
+    font-size: 20px;
+    line-height: calc(24 / 20);
+  }
+
+  .about-project__text {
+    margin-top: 22px;
+
+    font-size: 12px;
+    line-height: calc(18 / 12);
+  }
+
+  .about-project__timeline {
+    margin-top: 93px;
+  }
+
+  .about-project__timeline-box {
+    font-size: 14px;
+    line-height: calc(17 / 14);
+  }
+
+  .about-project__timeline-box_type_backend {
+    width: calc(140 / 668 * 100%);
+  }
+
+  .about-project__timeline-box_type_frontend {
+    width: calc(528 / 668 * 100%);
+  }
+
+  .about-project__timeline-term {
+    padding: 10px 0 9px;
+  }
+
+  .about-project__timeline-description {
+    margin-top: 14px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .about-project {
+    padding: 111px 70px 110px;
+  }
+
+  .about-project__text-block:nth-child(n + 2) {
+    margin-top: 0;
+    margin-left: 52px;
+  }
+
+  .about-project__text {
+    margin-top: 26px;
+
+    font-size: 14px;
+    line-height: calc(20 / 14);
+  }
+
+  .about-project__timeline {
+    margin-top: 110px;
+  }
+
+  .about-project__timeline-box_type_backend {
+    width: calc(228 / 1140 * 100%);
+  }
+
+  .about-project__timeline-box_type_frontend {
+    width: calc(912 / 1140 * 100%);
+  }
+
+  .about-project__timeline-term {
+    padding: 10px 0 9px;
+  }
+
+  .about-project__timeline-description {
+    margin-top: 14px;
+  }
+}

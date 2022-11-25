@@ -1,43 +1,48 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback } from 'react';
+import validator from 'validator';
 
-const useForm = () => {
-  const [enteredValues, setEnteredValues] = useState({});
+import { EMAIL_VALIDATION_ERROR_TEXT } from '../utils/scripts/constants';
+
+export default function useForm() {
+  const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
-  const [isFormValid, setIsFormValid] = useState(false);
+  const [isValid, setIsValid] = useState(false);
 
   const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
+    const { name, value, validationMessage } = event.target;
 
-    setEnteredValues({
-      ...enteredValues,
-      [name]: value,
-    });
+    setValues({ ...values, [name]: value });
+    setErrors({ ...errors, [name]: validationMessage });
+    setIsValid(event.target.closest('form').checkValidity());
 
-    setErrors({
-      ...errors,
-      [name]: event.target.validationMessage,
-    });
-
-    // setIsFormValid(event.target.closest(".form").checkValidity());
+    if (name === 'email') {
+      if (validator.isEmail(value)) {
+        setErrors({ ...errors, [name]: '' });
+        setIsValid(true);
+      } else {
+        setErrors({ ...errors, [name]: EMAIL_VALIDATION_ERROR_TEXT });
+        setIsValid(false);
+      }
+    }
   };
 
   const resetForm = useCallback(
-    (newValues = {}, newErrors = {}, newIsFormValid = false) => {
-      setEnteredValues(newValues);
+    (newValues = {}, newErrors = {}, newIsValid = false) => {
+      setValues(newValues);
       setErrors(newErrors);
-      setIsFormValid(newIsFormValid);
+      setIsValid(newIsValid);
     },
-    [setEnteredValues, setErrors, setIsFormValid]
+    [setValues, setErrors, setIsValid],
   );
 
   return {
-    enteredValues,
+    values,
     errors,
+    isValid,
+    setValues,
+    setErrors,
+    setIsValid,
     handleChange,
-    isFormValid,
     resetForm,
   };
-};
-
-export default useForm;
+}
